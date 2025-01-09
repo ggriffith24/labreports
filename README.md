@@ -1,5 +1,6 @@
 # labreports
 Reports for Fractal Geometry
 
-#Notes
+# Notes
+
 Hello World
