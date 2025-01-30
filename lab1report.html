@@ -514,12 +514,9 @@ show()
          Initially, when the code is run the turtle moves in a square pattern. With the base code the path that the turtle moves, the square, is outlined with a blue "pen". Figure 1 represents the base code, without any alterations.
         </p>
 
-
-
-
-        <figure>
+	       <figure>
           <img
-            src="first code change.png"
+            src=""
             
           />
           <figcaption>
@@ -528,10 +525,11 @@ show()
           </figcaption>
         </figure>
 
+
 <p>
          After ensuring that the original code could run effectively, I began exploring changes to the code. I proceeded to change the placement of the simulation, the background color, and the path's color. The code provided below will have an image corresponding to it.
         </p>
-<section id="code">
+ <section id="code">
 	<pre><code class="language-python">
 initializeTurtle() 
 showturtle() 
@@ -546,9 +544,72 @@ right(90)
 
 show() 
 </code></pre>
+
+	  <figure>
+          <img
+            src="first code change.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 2:</strong> This is what the code produces after only changing the pen color.
+            
+          </figcaption>
+        </figure>
       </section>
 
+	 <section id="code">
+	<pre><code class="language-python">
+initializeTurtle() 
+showturtle() 
+color('pink') 
+bgcolor('black') 
+ 
+jump(200, 200) 
+face(0) 
+		
+for _ in range(4): 
+forward(50) 
+right(90) 
+show() 
+</code></pre>
 
+
+<figure>
+          <img
+            src="first code change.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 3:</strong> When the forward() and right() code values are manipulated, in this case, the size of the turtles' path becomes smaller than the original.
+            
+          </figcaption>
+        </figure>
+      </section>
+
+<section id="code">
+<pre><code class="language-python">
+initializeTurtle() 
+showturtle() 
+color('yellow') 
+bgcolor('pink') 
+
+jump(200, 200) 
+face(0) 
+		 
+for _ in range(4): 
+forward(210) 
+right(90) 
+show() 
+	 </code></pre>	 
+	
+<figure>
+          <img src="first code change.png"/>
+          <figcaption>
+            <strong>Figure 4:</strong> The code was manipulated to represent the change in the background color, pen color, and the size of the turtle's path. Notice that the turtle's path is bigger than the original path, shown in Figure 1.
+            
+          </figcaption>
+        </figure>
+      </section>
 
       <!-- CONCLUSION SECTION -->
       <!-- -------------------------------------------------------------------------------------------- -->
@@ -558,7 +619,7 @@ show()
       <section id="conclusion">
         <h2>Conclusion</h2>
         <p>
-         In this lab, I explored how to produce a code that visualized the path of a turtle. The color of the path was manipulated to represent different results, which is shown above. The background color as well as the size of the area was altered to produce different results.
+         In this lab, I explored how to produce a code that visualized the path of a turtle. The color of the path was manipulated to represent different results, which is shown above. The background color as well as the size of the area was altered to produce different results.When the forward() and right() code values were changes to larger numbers we notice that the size of the square grew larger. Similarly, when the values were lower the square became smaller. The colo() and bgcolor() codes were used to alter the color of the pen as well as the background color of the area. 
         </p>
       </section>
 
