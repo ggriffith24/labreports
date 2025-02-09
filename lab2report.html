@@ -31,7 +31,7 @@
       <section id="introduction">
         <h2>Introduction</h2>
         <p>
-         In the lab for module 2, we are exploring new patterns that the turtle follows. When we explored this in the first lab, the turtle was moving in a square path. The trace of the path was manipulated to represent the different colors. In this lab, we will explore the other patterns that can be illustrated. More specifically, we will be producing structures like the Korich Snowflake.
+         In the lab for module 2, we are exploring new patterns that the turtle follows. When we explored this in the first lab, the turtle was moving in a square path. The trace of the path was manipulated to represent the different colors. In this lab, we will explore the other patterns that can be illustrated. More specifically, we will be producing structures like the Korich Snowflake. In the following report, we will both display and explain the code explored. A section will show the code use and a small description of the results.
         </p>
       </section>
 
@@ -41,10 +41,50 @@
 	<!-- -------------------------------------------------------------------------------------------- -->
 	<!-- -------------------------------------------------------------------------------------------- -->
 	<!-- -------------------------------------------------------------------------------------------- -->
+	    <section id="results">
+	<h2>Results and Exploration</h2>
+		    <p> 
+			This first line of code that is going to explore randomizes the path that is produced. This randomized walk is also defined as Brownian motion. Defined in the code below, we notice that the random_walk(steps, step_length) initializes it but there are specific parameters you can change.
+		    </p>
 	<section id="code">
 	<pre><code class="language-python">
-	# This is the original code provided for the Turtle simulation.
-	# @title Setup Turtle
+	import random
+CODE 1:
+# Step 1: Initialize the turtle canvas
+canvas_width = 1000
+canvas_height = 800
+initializeTurtle(initial_window_size=(canvas_width, canvas_height), mode='auto')
+
+# Step 2: Function to perform a random walk (Brownian motion)
+def random_walk(steps, step_length):
+    speed(0)             # Set speed to maximum for faster drawing
+    penup()
+    jump(450, 450)       # Start near the middle of the canvas
+    pendown()
+
+    for _ in range(steps):
+        forward(step_length)               # Move forward by the step length
+        right(random.uniform(-180, 180))   # Turn by a random angle between -180 and 180 degrees
+
+# Step 3: Execute the random walk with increased steps and/or step length
+steps = 1000
+step_length = 10
+
+random_walk(steps, step_length)
+
+# Step 4: Display the result
+show()
+</code></pre>
+ <figure>
+          <img
+            src="1 copy.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 1:</strong> 
+            
+          </figcaption>
+        </figure>
 
      </section>
 
