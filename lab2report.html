@@ -110,18 +110,100 @@ show()
 	The next set of code that is being presented, shows the turtle taking a path with what is called a Blip. The turtle starts on a straight path, travels up to an apex, and then back down to a straight path.
 		    </p>
      </section>
+		    <section id="code">
+	<pre><code class="language-python">
+initializeTurtle()
+showturtle()
 
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
+jump(50, 400)
+face(90)
+
+# Line with blip
+forward(800 / 3)
+left(60)
+forward(800 / 3)
+right(120)
+forward(800 / 3)
+left(60)
+forward(800 / 3)
+
+show()
+		</code></pre>
+<figure>
+          <img
+            src="Random 1.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 4:</strong> 
+            
+          </figcaption>
+        </figure>
+			    <p> 
+	The next few sets of codes that will be displayed manipulate the different patterns that can be created with the "Blip" that was defined/shown in the previous statements. The first set of code represents the result of code that involves the overlapping of two blips. The second set of code shows the attachment of multiple blips connected, at different angles to form what closely resembles the shape of a snowflake (but it is not fully connected).
+		    </p>
+ </section>
+		    <section id="code">
+	<pre><code class="language-python">
+	# Define the blip_line function
+def blip_line(length, order):
+    if order == 0:
+        forward(length)
+    else:
+        blip_line(length / 3, order - 1)
+        left(60)
+        blip_line(length / 3, order - 1)
+        right(120)
+        blip_line(length / 3, order - 1)
+        left(60)
+        blip_line(length / 3, order - 1)
+
+initializeTurtle()
+
+# Draw blip lines of different orders
+jump(50, 400)
+face(90)
+color('red')
+blip_line(800, 1)  # Order 1
+
+jump(50, 350)
+face(90)
+color('blue')
+blip_line(800, 2)  # Order 2
+
+show()
+	</code></pre>
+<figure>
+          <img
+            src="Random 1.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 5: In the image above we notice that there is an overlap of blips that we first discovered in the previous image. Each of the blips has a different color which can be changed in the code shown above. Additionally, the blue blip has more apexs than the red (and it is angled differently). </strong> 
+            
+          </figcaption>
+        </figure>
+  <section id="code">
+	<pre><code class="language-python">
+initializeTurtle()
+showturtle()
+
+jump(50, 300)
+face(90)
+color('green')
+blip_line(800, 3)  # Order 3
+
+show()
+	</code></pre>
+	  <p> The code is then further extended to create what is known as the Koch snowflake.This is what the first code below represents. I would now like to take this line of code and extend it to create a more fascinating image. I will attempt to manipulate the color along with the amount of blips and possibly over lap multiple Koch snowflakes.
+	  </p>
+    
       <section id="results">
       
       
-        <h2>Results &amp; Analysis</h2>
+        <h2>Results &amp; Conclusion</h2>
         <p>
-         Initially, when the code is run the turtle moves in a square pattern. With the base code the path that the turtle moves, the square, is outlined with a blue "pen". Figure 1 represents the base code, without any alterations.
+         Initially
         </p>
 
 	       <figure>
@@ -136,6 +218,4 @@ show()
         </figure>
 
 
-<p>
-         After ensuring that the original code could run effectively, I began exploring changes to the code. I proceeded to change the placement of the simulation, the background color, and the path's color. The code provided below will have an image corresponding to it.
-        </p>
+
