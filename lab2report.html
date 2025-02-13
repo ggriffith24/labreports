@@ -381,7 +381,7 @@ show()
 
  <figure>
           <img
-            src=" Inscribed Koch snowflake.png"
+            src=" Order Change.png"
             
           />
           <figcaption>
@@ -390,10 +390,41 @@ show()
           </figcaption>
         </figure>
 		    
-<p>The final image that we were introduced to is known as the Dragon Curve. Below I will show the base code, an image of the base code as well as an image of the manipulated code. In the manipulation of this code, I changed the color and the size. When the value of the _____ code was changed ________________. </p>
+<p>The final image that we were introduced to is known as the Dragon Curve. Below I will show the base code, an image of the base code as well as an image of the manipulated code. In the manipulation of this code, I changed the color and the size. The original value of 0.5 was changed in the "new length" code determining how large or small the curve would display. When the value was increased the image was smaller and vice versa for the smaller values. </p>
 
  <section id="code">
 	<pre><code class="language-python">
+# Define the dragon curve function
+def dragon_curve(order, length, turn_direction):
+    # Base case: if order is 0, just move forward
+    if order == 0:
+        forward(length)
+    else:
+        # Calculate the new length for each recursive step
+        new_length = length / (2 ** 0.5)
+
+        # Recursively draw the dragon curve, turning right and left as needed
+        dragon_curve(order - 1, new_length, 1)  # First segment
+        right(turn_direction * 90)             # Turn by 90 degrees
+        dragon_curve(order - 1, new_length, -1) # Second segment
+
+# Initialize the turtle for drawing
+initializeTurtle()
+showturtle()
+
+
+# Move the turtle to a starting position
+jump(400, 400)
+face(0)             # Set starting direction
+color('purple')     # Choose a color
+
+# Draw the dragon curve
+order = 10          # Complexity level
+length = 300        # Initial length of each segment
+dragon_curve(order, length, 1)
+
+# Show the final drawing
+show()
 
 	</code></pre>	
 	 
@@ -401,18 +432,19 @@ show()
      
 		 <figure>
           <img
-            src=" Inscribed Koch snowflake.png"
-            
+            src=" Base Dragon curve copy.png"
+            src="Dragon curve 15 copy.png"
+	src="Dragon curve 8 copy.png"
           />
           <figcaption>
-            <strong>Figure 10:</strong> Display of the base and manipulated Dragon curve.
+            <strong>Figure 10-12:</strong> Display of the base and manipulated Dragon curves. The second image is when the order is changed to 15. The third image represents the complexity when the order is 8.
             
           </figcaption>
         </figure>
       
         <h2>Conclusion</h2>
         <p>
-         This module two lab had us explore the code for blips, Koch snowflakes, and Dragon curves. Most of the experimentation in this lab focused on the Koch snowflakes and the Dragon curves. I was fascinated by how we can easily alter the length by either defining a new length or writing "length / 3" or any given number. Initially, I did not think this would alter the vertical value but that is why experimentation is vital. Altering the values of left(), and right() assisted in moving the position of the snowflake horizontally. The order command was also tested. I noticed that the alteration of the order number decreased the quantity of blips produced when producing a Koch snowflake. The final conclusion that was made was that through trials of the Dragon curve code.
+         This module two lab had us explore the code for blips, Koch snowflakes, and Dragon curves. Most of the experimentation in this lab focused on the Koch snowflakes and the Dragon curves. I was fascinated by how we can easily alter the length by either defining a new length or writing "length / 3" or any given number. Initially, I did not think this would alter the vertical value but that is why experimentation is vital. Altering the values of left(), and right() assisted in moving the position of the snowflake horizontally. The order command was also tested. I noticed that the alteration of the order number decreased the quantity of blips produced when producing a Koch snowflake. The final conclusion that was made was that through trials of the Dragon curve code. The new length value altered the size of the curve that was displayed, inversely. For the order, associated with the dragon curve, it changes the complexity of the curve produced. A higher number will produce a more complex curve whereas a smaller number will be a more simplistic image.
         </p>
 
 	       
