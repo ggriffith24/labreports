@@ -31,7 +31,7 @@
       <section id="introduction">
         <h2>Introduction</h2>
         <p>
-         In the lab for module 2, we are exploring new patterns that the turtle follows. When we explored this in the first lab, the turtle was moving in a square path. The trace of the path was manipulated to represent the different colors. In this lab, we will explore the other patterns that can be illustrated. More specifically, we will be producing structures like the Korich Snowflake. In the following report, we will both display and explain the code explored. A section will show the code use and a small description of the results.
+         In the lab for module 2, we are exploring new patterns that the turtle follows. When we explored this in the first lab, the turtle was moving in a square path. The trace of the path was manipulated to represent the different colors. In this lab, we will explore the other patterns that can be illustrated. More specifically, we will be producing structures like the Koch Snowflake and Dragon curves. In the following report, we will both display and explain the code explored. A section will show the code use and a small description of the results.
         </p>
       </section>
 
@@ -142,7 +142,7 @@ show()
 			    <p> 
 	The next few sets of codes that will be displayed manipulate the different patterns that can be created with the "Blip" that was defined/shown in the previous statements. The first set of code represents the result of code that involves the overlapping of two blips. The second set of code shows the attachment of multiple blips connected, at different angles to form what closely resembles the shape of a snowflake (but it is not fully connected).
 		    </p>
- </section>
+ 
 		    <section id="code">
 	<pre><code class="language-python">
 	# Define the blip_line function
@@ -209,7 +209,7 @@ show()
 
  <section id="code">
 	<pre><code class="language-python">
-		initializeTurtle()
+initializeTurtle()
 showturtle()
 
 # Define the blip_line function (Koch curve)
@@ -330,21 +330,89 @@ show()
             
           />
           <figcaption>
-            <strong>Figure 7:</strong> This is the base code used to represent a fully completed Koch snowflake. We will use this code to experiment later in the document.
+            <strong>Figure 8:</strong> This is the base code used to represent a fully completed Koch snowflake. We will use this code to experiment later in the document.
             
           </figcaption>
         </figure>
 		    
 	  
-	  <p> After utilizing ChatGPT and experimenting with the code provided, I was able to produce the image above. Initially, ChatGPT proposed a code that issued the drawing of two differing Koch snowflakes. But, the issue that I was facing was that the smaller Koch snowflake was not in the center of the larger, outer Koch snowflake. I began to experiment specifically with the left(), forward(), right(), and backward codes. I knew that these would dictate the position of the snowflake. The original values reflected those in the code displayed by the section preceding Figure __. I began by increasing the number by an interval of 100 (only the left() and right() codes). At the value of six hundred, I noticed that the snowflake was far to the right. Similarly, at the value of five hundred, the value was slightly left. Therefore, I came to the conclusion that the value needed to be between 500 and 600. The values were then changed at an interval of ten until the result of five-hundred and ninety. The smaller snowflake was now in the center of the bottom of the larger snowflake. I then attempted to change the value of the last left() code to different values but that was not repositioning the snowflake vertically. I then changed the first forward() command forward( length / 4) by an interval of 1 and realized this would solve the problem. Then I was able to perfectly place the smaller Koch snowflake in the direct center of the larger Koch snowflake.
-	  
-	  The final image that we were introduced to is known as the Dragon Curve. Below I will show the base code, an image of the base code as well as an image of the manipulated code. In the manipulation of this code, I changed the color and the size. When the value of the _____ code was changed ________________.</p>
-      <section id="conclusion">
-      
+	  <p> After utilizing ChatGPT and experimenting with the code provided (speaking of the code preceding Figure 7), I was able to produce the image above. Initially, ChatGPT proposed a code that issued the drawing of two differing Koch snowflakes. But, the issue that I was facing was that the smaller Koch snowflake was not in the center of the larger, outer Koch snowflake. I began to experiment specifically with the left(), forward(), right(), and backward codes. I knew that these would dictate the position of the snowflake. The original values reflected those in the code displayed by the section preceding Figure 7. I began by increasing the number by an interval of 100 (only the left() and right() codes). At the value of six hundred, I noticed that the snowflake was far to the right. Similarly, at the value of five hundred, the value was slightly left. Therefore, I came to the conclusion that the value needed to be between 500 and 600. The values were then changed at an interval of ten until the result of five-hundred and ninety. The smaller snowflake was now in the center of the bottom of the larger snowflake. I then attempted to change the value of the last left() code to different values but that was not repositioning the snowflake vertically. I then changed the first forward() command forward( length / 4) by an interval of 1 and realized this would solve the problem. Then I was able to perfectly place the smaller Koch snowflake in the direct center of the larger Koch snowflake.
+
+Aside from the main goal I wanted to achieve, I also experimented with the order code. I realize that when the order was changed the amount of "blips" was produced. Below I have provided the code and an image of the result of changing the order to 3 (and also changing the length).	  
+	  </p>
+
+ <section id="code">
+	<pre><code class="language-python">
+ initializeTurtle()
+showturtle()
+
+# Define the blip_line function (Koch curve)
+def blip_line(length, order):
+    if order == 0:
+        forward(length)
+    else:
+        blip_line(length / 4 , order - 3)
+        left(60)
+        blip_line(length / 4 , order - 3)
+        right(120)
+        blip_line(length / 4 , order - 3)
+        left(60)
+        blip_line(length / 4 , order - 3)
+
+# Draw the Koch snowflake
+def koch_snowflake(length, order):
+    for _ in range(3):
+        blip_line(length, order)
+        right(120)
+
+# Set up the turtle
+jump(250, 500)
+face(0)
+color('lightgreen')
+
+# Draw the snowflake
+length = 230
+order = 3
+koch_snowflake(length, order)
+
+show()
+</code></pre>
+
+
+ <figure>
+          <img
+            src=" Inscribed Koch snowflake.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 9:</strong> As a result of the order change, the number of blips decreased.
+            
+          </figcaption>
+        </figure>
+		    
+<p>The final image that we were introduced to is known as the Dragon Curve. Below I will show the base code, an image of the base code as well as an image of the manipulated code. In the manipulation of this code, I changed the color and the size. When the value of the _____ code was changed ________________. </p>
+
+ <section id="code">
+	<pre><code class="language-python">
+
+	</code></pre>	
+	 
+	 <section id="conclusion">
+     
+		 <figure>
+          <img
+            src=" Inscribed Koch snowflake.png"
+            
+          />
+          <figcaption>
+            <strong>Figure 10:</strong> Display of the base and manipulated Dragon curve.
+            
+          </figcaption>
+        </figure>
       
         <h2>Conclusion</h2>
         <p>
-         This module two lab had us explore the code for blips, Koch snowflakes, and Dragon curves. Most of the experimentation in this lab focused on the Koch snowflakes and the Dragon curves. I was fascinated by how we can easily alter the length by either defining a new length or writing "length / 3" or any given number. Initially, I did not think this would alter the vertical value but that is why experimentation is vital. Altering the values of left(), and right() assisted in moving the position of the snowflake horizontally.
+         This module two lab had us explore the code for blips, Koch snowflakes, and Dragon curves. Most of the experimentation in this lab focused on the Koch snowflakes and the Dragon curves. I was fascinated by how we can easily alter the length by either defining a new length or writing "length / 3" or any given number. Initially, I did not think this would alter the vertical value but that is why experimentation is vital. Altering the values of left(), and right() assisted in moving the position of the snowflake horizontally. The order command was also tested. I noticed that the alteration of the order number decreased the quantity of blips produced when producing a Koch snowflake. The final conclusion that was made was that through trials of the Dragon curve code.
         </p>
 
 	       
