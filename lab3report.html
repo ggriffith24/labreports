@@ -71,6 +71,36 @@ show()
           </figcaption>
         </figure>
 
+<section id="code">
+	<pre><code class="language-python">new
+initializeTurtle()
+showturtle()
+
+# Define the function to draw an equilateral triangle
+def draw_triangle(length):
+    for _ in range(5):
+        forward(length)
+        left(120)
+
+# Set up the turtle
+jump(300, 500)
+face(90)
+color('purple')
+length = 237
+draw_triangle(length)
+
+show()
+		
+	</code></pre>
+
+	<figure>
+          <img
+            src="equaltri.png"/>
+          <figcaption>
+            <strong>Figure 2: After altering the original code this was created.</strong>  
+          </figcaption>
+        </figure>
+ <p> The code shown above is the code that I manipulated slightly. I first changed the color of the triangle to purple, specifically shown by the  color('purple') line. I noticed that the for _ in range(5) code determines the ending position of the turtle after the code is run. In Figure one we see that the turtle starts and stops at the same position (the left side of the triangle). When I changed the value from three to five the ending position of the turtle was at the apex of the triangle. The last alteratin that I made was changing the size of the triangle from 400 tp 237. This made the triangle smaller. </p>
 	
       </section>
 
