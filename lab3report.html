@@ -31,15 +31,47 @@
       <section id="introduction">
         <h2>Introduction</h2>
         <p>
-         In the lab for module 3, we will be exploring how to create triangles and other figures that come with it. Initially, I will show you how to produce a triangle and then go further to show you how to produce a Sierpinski triangle. With this produced code, I will attempt to expand the code to make two connected Sierpinski triangles.
+         In the lab for module 3, we will be exploring how to create triangles and other figures that come with it. Initially, I will show you how to produce a triangle and then go further to show you how to produce a Sierpinski triangle. With this produced code, I will attempt to expand the code to make two connected Sierpinski triangles. Aside from this, I will manipulate the size and the color of the figures, as I have done in previous labs. The code that changes the size of the figures will be shown and explained.
         </p>
       </section>
 
 	    
       <section id="results">
         <h2>Results &amp; Analysis </h2>
-        <p>    </p>
+        <p> I will begin by exploring the code to produce an equilateral triangle. Below I have displayed two sets of code. The first set of codes is the base equilateral triangle that was given. The second set of code is when the triangle size and color are altered.   </p>
 
+
+<section id="code">
+	<pre><code class="language-python">new
+initializeTurtle()
+showturtle()
+
+# Define the function to draw an equilateral triangle
+def draw_triangle(length):
+    for _ in range(3):
+        forward(length)
+        left(120)
+
+# Set up the turtle
+jump(300, 500)
+face(90)
+color('green')
+length = 400
+draw_triangle(length)
+
+show()
+		
+	</code></pre>
+
+<figure>
+          <img
+            src="equaltri.png"/>
+          <figcaption>
+            <strong>Figure 1: This is the product of the original code for the equilateral triangle. The triangle is drawn by the turtle and the original color is green.</strong>  
+          </figcaption>
+        </figure>
+
+	
       </section>
 
 	    
@@ -64,3 +96,15 @@
          This module 
         </p>
 
+	       <section id="code">
+	<pre><code class="language-python">new
+		</code></pre>
+      </section>
+
+ <figure>
+          <img
+            src="Random 1.png"/>
+          <figcaption>
+            <strong>Figure 1:</strong>  
+          </figcaption>
+        </figure>	       
