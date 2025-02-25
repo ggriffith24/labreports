@@ -38,7 +38,7 @@
 	    
       <section id="results">
         <h2>Results &amp; Analysis </h2>
-        <p> I will begin by exploring the code to produce an equilateral triangle. Below I have displayed two sets of code. The first set of codes is the base equilateral triangle that was given. The second set of code is when the triangle size and color are altered.   </p>
+        <p> I will begin by exploring the code to produce an equilateral triangle. I've shared below two sets of code. The first set of codes is the base equilateral triangle that was given. The second code set is when the triangle size and color are altered.   </p>
 
 
 <section id="code">
@@ -100,9 +100,117 @@ show()
             <strong>Figure 2: After altering the original code this was created.</strong>  
           </figcaption>
         </figure>
- <p> The code shown above is the code that I manipulated slightly. I first changed the color of the triangle to purple, specifically shown by the  color('purple') line. I noticed that the for _ in range(5) code determines the ending position of the turtle after the code is run. In Figure one we see that the turtle starts and stops at the same position (the left side of the triangle). When I changed the value from three to five the ending position of the turtle was at the apex of the triangle. The last alteratin that I made was changing the size of the triangle from 400 tp 237. This made the triangle smaller. </p>
-	
-      </section>
+ <p> The code shown above is the code that I manipulated slightly. I first changed the color of the triangle to purple, specifically shown by the  color('purple') line. I noticed that the for _ in range(5) code determines the ending position of the turtle after the code is run. In Figure 1, we see that the turtle starts and stops at the same position (the left side of the triangle). When I changed the value from three to five the ending position of the turtle was at the apex of the triangle. The last alteration that I made was changing the size of the triangle from 400 to 237. This made the triangle smaller. </p>
+
+
+<p> The next set of code I will display, is that of the Sierpenski triangle. Before the turtle draws this triangle we first have to define the Sierpinski triangle. This is shown but the first set of code below.</p>
+
+	<section id="code">
+	<pre><code class="language-python">new
+# Define the recursive Sierpinski triangle function
+def sierpinski_triangle(length, order):
+    if order == 0:
+        draw_triangle(length)
+    else:
+        sierpinski_triangle(length / 2, order - 1)
+        forward(length / 2)
+        sierpinski_triangle(length / 2, order - 1)
+        backward(length / 2)
+        left(60)
+        forward(length / 2)
+        right(60)
+        sierpinski_triangle(length / 2, order - 1)
+        left(60)
+        backward(length / 2)
+        right(60)
+
+#Turtle is drawing a Sierpinski triangle		
+initializeTurtle()
+showturtle()
+
+# Set up the turtle
+jump(300, 500)
+face(90)
+color('green')
+
+# Draw the Sierpinski triangle
+length = 400
+order = 4
+sierpinski_triangle(length, order)
+
+show()	
+	</code></pre>
+
+		 <figure>
+          <img
+            src="sierpinskitriangle.png"/>
+          <figcaption>
+            <strong>Figure 3</strong>  
+          </figcaption>
+        </figure>
+
+
+<p>I presume with this code (the first block) that we are drawing multiple sets of triangles that progressively get smaller to create the fractal pattern that we are seeking. More specifically, I believe that the /2 in the line of code determines the length of the next triangle. This cuts the value length of each segment of the triangle gets cut in half. The second block of code defines the turtle so it will draw the Sierpinski code defined in the first block. 
+
+The next set of codes below shows the manipulation of the size and color of the Sierpinski triangles as well as the size. I purposely places the turtle at the right end of each triangle to give the illusion of a continuous drawing. Notice that the x value of the jump() code is the only number that is changing. Again the turtle position was moved to the righr portion of the triangle.</p>
+     
+	<section id="code">
+	<pre><code class="language-python">new
+		initializeTurtle()
+showturtle()
+
+# Set up the turtle
+jump(300, 500)
+face(90)
+color('pink')
+
+# Draw the Sierpinski triangle
+length = 321
+order = 4
+sierpinski_triangle(length, order)
+
+# Move turtle to new position
+jump(620,500)
+face(90)
+color('orange')
+
+# Draw the Sierpinski triangle
+length = 200
+order = 4
+sierpinski_triangle(length, order)
+
+# Move turtle to a new position
+jump(820,500)
+face(90)
+color('yellow')
+
+# Draw the Sierpinski triangle
+length = 50
+order = 4
+sierpinski_triangle(length, order)
+
+show()
+	</code></pre>
+
+
+ <figure>
+          <img
+            src="tripletriangles.png"/>
+          <figcaption>
+            <strong>Figure 4</strong>  
+          </figcaption>
+        </figure>
+
+
+
+
+
+
+
+
+
+		
+	</section>
 
 	    
 <section id="code">
