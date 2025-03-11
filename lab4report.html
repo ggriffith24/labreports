@@ -35,7 +35,10 @@
       <section id="introduction">
         <h2>Introduction</h2>
         <p>
-         In this lab, we will be exploring the creation of trees. The first line of code involves the use of the turtle to draw said trees.
+         In this lab, we will be exploring the creation of trees. The first line of code involves using the turtle to draw said trees. We will be using the recursion process to create the branches of the trees. I will attempt to change the lengths of the branches to create more space for a greater number of branches. Additionally, I would like to create a treee of varing lengths. In other words, instead of having a recursive formula that makes all the branches the equivalent (at difffent angles), I would like to make the tree less symmetrical, producing a more natural tree.
+
+          Before we begin I would like to provide the base code, that defines the turtle that is show in the following link:
+          https://raw.githubusercontent.com/williamedwardhahn/fractal25/refs/heads/main/turtle_setup.py
         </p>
       </section>
 
@@ -43,27 +46,164 @@
 
       <section id= "Results">
         <h2>Results and Analysis</h2>
-        <p> </p>
+        <p> The first sets of code that is presented to us is used to define the recusion formula and the specific defining of the side and depth of each tree. Below is the unaffected code for the tree as well as the image to represent it. </p>
 
 
 <section id="code">
   <pre><code class= "language-python">
+    # Function to draw a fractal tree using recursion
+def fractal_tree(length, depth):
+    if depth == 0:
+        return
+    else:
+
+        forward(length)
+        left(30)
+
+        fractal_tree(length * 0.7, depth - 1)
+
+        right(60)
+
+        fractal_tree(length * 0.7, depth - 1)
+
+        left(30)
+        backward(length)
+
     
+#SECOND SET OF CODE
+    # Initialize the turtle
+initializeTurtle(initial_window_size=(500, 500))
+
+# Set up the turtle's starting position and orientation
+jump(250, 450)  # Starting position at the bottom center of the canvas
+face(0)
+color('green')  # Set the pen color
+
+# Set the length and depth for the fractal tree
+length = 100  # Initial length of the main trunk
+depth = 7     # Recursion depth (number of branching levels)
+
+# Draw the fractal tree
+fractal_tree(length, depth)
+
+# Display the drawing
+show()
   </code></pre>
 
+
  <figure>
-          <img src="Random 1.png" />
+          <img src="base tree.png" />
           <figcaption>
-            <strong>Figure 1:</strong> 
+            <strong>Figure 1: This image shows the product of the unaltered code, producing a green tree.</strong> 
           </figcaption>
         </figure>
 
-  <video>
-    <source src="tree.mp4" />
-  </video>
-        
-      </section>
 
+  
+<p>After examining the code, I made some inferences about what each line translates to, using previous knowledge. I know that the left() and right() codes change the angle of the title to align the turtle in the right position to draw. jump(,) defines the starting position to draw the tree and color('') defines the color of the pen. The code also defines the length as the length of the trunk of the tree and the deptth as the number of branch levels that the tree has. 
+
+  The next set of code shown below alters the creation of the tree by first using the branch length as a restriction. More specifically, an "if-then" statement is used to create branches of different length depending on if the length of the branch is greater than three. Another added element is the shorten_by code that defines the amount that the new length of a branch is reduced by.
+</p>
+
+  
+  <section id="code"> 
+     <pre><code class= "language-python">
+       # Define the fractal tree function
+def build_tree(branch_length, shorten_by, angle):
+    if branch_length > 3:
+
+        forward(branch_length)
+
+        new_length = branch_length - shorten_by
+
+        left(angle)
+
+        build_tree(new_length, shorten_by, angle)
+
+        right(angle * 2)
+
+        build_tree(new_length, shorten_by, angle)
+
+        left(angle)
+
+        backward(branch_length)
+
+
+
+       # Initialize the turtle
+initializeTurtle(initial_window_size=(800, 800))
+
+# Set up the turtle's starting position and orientation
+jump(400, 600)  # Starting position at the bottom center of the canvas
+face(0)
+color('green')  # Set the pen color
+
+# Draw the fractal tree
+build_tree(80, 8, 25)
+
+# Display the drawing
+show()
+     </code></pre>
+
+    
+    
+    <figure>
+    <img src="base tree 2.png" />
+    <figcaption><strong>Figure 2:</strong>
+    </figcaption>
+  </figure>
+
+<p>In the next line of code shown, I changed the restriction value of the "if" statement by one degree. The build tree values were changed from build_tree(80,8,25) to build_tree(100,9,35). This resulted in the creation of more branches with a wider angle. Some of these branches are almost parallel to the base of the trunk of the tree. Another minor change with this tree is that it is pink.</p>
+
+<section id="code">
+ <pre><code class= "language-python">
+# Define the fractal tree function
+def build_tree(branch_length, shorten_by, angle):
+  if branch_length > 2:
+
+    forward(branch_length)
+
+    new_length = branch_length - shorten_by
+
+    left(angle)
+
+    build_tree(new_length, shorten_by, angle)
+
+    right(angle * 2)
+
+    build_tree(new_length, shorten_by, angle)
+
+    left(angle)
+
+    backward(branch_length)
+
+
+
+   # Initialize the turtle
+initializeTurtle(initial_window_size=(950, 830))
+
+# Set up the turtle's starting position and orientation
+jump(500, 660)  # Starting position at the bottom center of the canvas
+face(0)
+color('pink') # Set the pen color
+
+# Draw the fractal tree
+build_tree(100, 9, 35)
+
+# Display the drawing
+show()
+   
+ </code></pre>
+
+    
+    <figure>
+    <img src="pink tree.png" />
+    <figcaption><strong>Figure 3:</strong>
+    </figcaption>
+  </figure>
+
+<p> For my next discovery, I would have liked to create a tree with a series of randomized branch lengths, to create a more natural look. Aside from this, I first attempted to add to the condition of the "if" statement to create a tree with a brown trunk and branches and colored "flowers" (the smallest branches would be colored pink to give the illusion of flowers). After research and numerous trials, I was unfortunately unable to achieve this goal.</p>
+  
       <section id="Conclusion">
         <h2>Conclusion</h2>
         <p>g </p>
