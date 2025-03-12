@@ -203,9 +203,86 @@ show()
   </figure>
 
 <p> Initially, when analyzing the content of this lab, I wanted to create a tree that produced a more natural production. My first idea was to create a tree and have the branches and the trunk colored brown. Then assign the color of the smallest branches of the tree to be pink to give the illusion of flowers. After much trial, I have not been able to produce that tree. My other idea was to create a tree with randomized branch lengths to create a more realistic tree. After many trials and research, I was able to add a line of code that included the randomization of the branch lengths. This is produced by the code shown below. I have also included three products of this code.</p>
+
+
+   <section id="code">
+ <pre><code class= "language-python">
+   import random
+import random
+
+# Define the fractal tree function
+def build_tree(branch_length, shorten_by, angle):
+    if branch_length > 2:
+
+        forward(branch_length)
+
+        # Swapped the arguments to ensure a valid range for randint
+        new_length = branch_length - shorten_by
+
+        left(angle)
+
+        build_tree(new_length, shorten_by, angle)
+
+        right(angle * 2)
+
+        build_tree(new_length, shorten_by, angle)
+
+        left(angle)
+
+        backward(branch_length)
+        forward(branch_length)
+
+        # Changed to multiplication to get a randomized length reduction
+        new_length = branch_length - (shorten_by * random.randint(1,10))
+
+        left(angle)
+
+        build_tree(new_length, shorten_by, angle)
+
+        right(angle * 2)
+
+        build_tree(new_length, shorten_by, angle)
+
+        left(angle)
+
+        backward(branch_length)
+
+
+   # Initialize the turtle
+initializeTurtle(initial_window_size=(950, 830))
+
+# Set up the turtle's starting position and orientation
+jump(500, 660)  # Starting position at the bottom center of the canvas
+face(0)
+color('purple') # Set the pen color
+
+# Draw the fractal tree
+build_tree(60, 5, 20)
+
+# Display the drawing
+show()
+</code></pre>
+  
+   <figure>
+    <img src="random tree1.png" />
+    <figcaption><strong>Figure 3:</strong>
+    </figcaption>
+  </figure>
+
+ <figure>
+    <img src="random tree2.png" />
+    <figcaption><strong>Figure 3:</strong>
+    </figcaption>
+  </figure>
+
+   <figure>
+    <img src="random tree3.png" />
+    <figcaption><strong>Figure 3:</strong>
+    </figcaption>
+  </figure>
   
       <section id="Conclusion">
         <h2>Conclusion</h2>
-        <p>g </p>
+        <p> Throughout this lab we explored how to develop trees utilizing recursion. I first showed the base code for each of the trees produced. Then I went on to explore how I could extend the code of the second set of base code to produce a more natural looking tree. Upon using the knowledge that I have from previous labs and research about randomization, I was able to produce a tree that contained most of the elements that I aimed for. To be more specific the addition of the random.randint() was added to yeild randomized lengths of the branches. </p>
       </section>
         
