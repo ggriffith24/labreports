@@ -11,9 +11,9 @@ Lab 3: https://ggriffith24.github.io/labreports/lab3report.html
 
 Lab 4: https://ggriffith24.github.io/labreports/lab4report.html
 
-Lab 5: https://ggriffith24.github.io/labreports/
+Lab 5: https://ggriffith24.github.io/labreports/lab5report.html
 
-Lab 6: https://ggriffith24.github.io/labreports/
+Lab 6: https://ggriffith24.github.io/labreports/lab6report.html
 
 # Notes
 
