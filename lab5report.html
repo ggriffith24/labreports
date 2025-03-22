@@ -89,9 +89,58 @@ plt.axis('off')
 plt.show()
      </code></pre>
 
-<p>The x_start code determines the starting point on the x axis for the  bars. Similarly, the y_posotion, is the same as x_start but of course for the y axis. The x_end identifies the end point in which the bar stops, this also determines the length of the bar. bar_height determines the height of the bar with respect to the y-axis. Initially when I looked at the spacing command I thought that this meant that the spacing would be the equivalent to the quantity set. In other words if the spacing=3 then there would be a three unit space (with respect to the y axis) that would be in between each bar segment. I realized that when I changed the spacing to 5 the first set of bars would end at the y value of 5, but thats also where the next set would start. When I changed the value to 6, i noticed that there was a one unit gap between each step. Depth determines how many sets of bars are being created. I then altered the left_segment and right_segment codes to see that it alters the length of each bar in the given depth level. </p>
+<p>The x_start code determines the starting point on the x axis for the  bars. Similarly, the y_posotion, is the same as x_start but of course for the y axis. The x_end identifies the end point in which the bar stops, this also determines the length of the bar. bar_height determines the height of the bar with respect to the y-axis. Initially when I looked at the spacing command I thought that this meant that the spacing would be the equivalent to the quantity set. In other words if the spacing=3 then there would be a three unit space (with respect to the y axis) that would be in between each bar segment. I realized that when I changed the spacing to 5 the first set of bars would end at the y value of 5, but thats also where the next set would start. When I changed the value to 6, I noticed that there was a one-unit gap between each step. Depth determines how many sets of bars are being created. I then altered the left_segment and right_segment codes to see that they alter each bar's length in the given depth level.
+
+Below I have displayed the extended code as well as the image representing the extended code.</p>
 </section>
 
+        <section id="code">
+  <pre><code class= "language-python">
+    import numpy as np
+import matplotlib.pyplot as plt
+
+# Set initial parameters
+x_start = 0       # Starting x-coordinate of the first bar
+x_end = 3         # Ending x-coordinate of the first bar
+y_position = 0    # Starting y-coordinate (height of the first bar)
+bar_height = 3    # Height of each bar
+spacing = 4      # Space between bars (distance downwards)
+depth = 8         # Number of levels to draw
+colors = ["red", "purple"]  # Alternating colors
+
+# Define a function to create the Cantor Set pattern
+def cantor_set(x_start, x_end, y_position, depth, level=0):
+    if depth == 0:
+        return []
+
+    # Left and right segments for the current bar
+    color = colors[level % 2]  # Alternate colors by level
+    left_segment = [[x_start, x_start + (x_end - x_start) / 3, y_position, color]]
+    right_segment = [[x_end - (x_end - x_start) / 3, x_end, y_position, color]]
+
+    # Recursively generate segments for the next levels
+    left_recursive = cantor_set(x_start, x_start + (x_end - x_start) / 3, y_position - spacing, depth - 1, level + 1)
+    right_recursive = cantor_set(x_end - (x_end - x_start) / 3, x_end, y_position - spacing, depth - 1, level + 1)
+
+    # Combine the current segments with the results from recursive calls
+    return left_segment + right_segment + left_recursive + right_recursive
+
+# Generate Cantor Set segments data
+segments = np.array(cantor_set(x_start, x_end, y_position, depth), dtype=object)  # Convert to an array for easy plotting
+
+# Plot the Cantor Set
+plt.figure(figsize=(10, 8))
+
+# Draw each segment with alternating colors
+for x_start, x_end, y, color in segments:
+    plt.fill_between([x_start, x_end], [y] * 2, [y - bar_height] * 2, color=color)
+
+# Hide the axes for a clean look
+plt.axis('on')
+plt.show()
+
+     </code></pre>
+          
  <figure>
           <img src="alternating colors.png" />
           <figcaption>
@@ -101,6 +150,6 @@ plt.show()
 
  <section id="Conclusion">
         <h2>Conclusion</h2>
-        <p> In this lab we used a plane to display a group of bars of varying lengths and heights. I wanted to create a triangle, whos apex pointed downward as an extension of the code but I was unsuccessful. However, I was able to extend the code to make bars of alternating colors.</p>
+        <p> In this lab we used a plane to display a group of bars of varying lengths and heights. I wanted to create a triangle, whose apex pointed downward as an extension of the code but I was unsuccessful. However, I was able to extend the code to make bars of alternating colors. After continued trials I hope to produce what I aim for.</p>
       </section>
           
