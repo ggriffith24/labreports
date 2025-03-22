@@ -1,0 +1,106 @@
+<html>
+<head> <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="stylesheet" href="https://latex.vercel.app/style.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"/><script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+
+<title>Fractal Geometry Lab Report</title>
+
+</head>
+<body id="top">
+
+
+
+
+  <header>
+    <h1>Fractal Geometry Lab Report</h1>
+    <p class="author">
+      [Gabrielle Griffith] <br />
+    [March 21, 2025]
+    </p>
+  </header>
+  
+
+
+  <main>
+    <article class="indent-pars">
+      
+      <!-- INTRODUCTION SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p> This lab is titled Infinite Dust. Initially, when analyzing the base code for the lab, I realized we are utilizing a Cartesian plane to create black bars/lines. We first start with a long rectangular bar then as we move lower the quantity of the bars increases. But the size of these bars also become progressively smaller. In this lab I would like to manipulate the color of the bars as well as create a downwards triangle.
+        
+        Below I have shown an image of the base code that was given in this lab (which describes what was said above). </p>
+        </section>
+
+ <figure>
+          <img src="base black bars.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+
+      <section id= "Results">
+        <h2>Results and Analysis</h2>
+        <p>Before showing the production of my extended code, I will show the code and describe what individual lines of the code do.</p>
+<section id="code">
+  <pre><code class= "language-python">
+    # Import libraries for math and plotting
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set initial parameters
+x_start = 0       # Starting x-coordinate of the first bar
+x_end = 3         # Ending x-coordinate of the first bar
+y_position = 0    # Starting y-coordinate (height of the first bar)
+bar_height = 5    # Height of each bar
+spacing = 10      # Space between bars (distance downwards)
+depth = 6         # Number of levels to draw
+
+# Define a function to create the Cantor Set pattern
+def cantor_set(x_start, x_end, y_position, depth):
+    if depth == 0:
+        return []
+
+    # Left and right segments for the current bar
+    left_segment = [[x_start, x_start + (x_end - x_start) / 3, y_position]]
+    right_segment = [[x_end - (x_end - x_start) / 3, x_end, y_position]]
+
+    # Recursively generate segments for the next levels
+    left_recursive = cantor_set(x_start, x_start + (x_end - x_start) / 3, y_position - spacing, depth - 1)
+    right_recursive = cantor_set(x_end - (x_end - x_start) / 3, x_end, y_position - spacing, depth - 1)
+
+    # Combine the current segments with the results from recursive calls
+    return left_segment + right_segment + left_recursive + right_recursive
+
+# Generate Cantor Set segments data
+segments = np.array(cantor_set(x_start, x_end, y_position, depth))  # Convert to an array for easy plotting
+
+# Plot the Cantor Set
+plt.figure(figsize=(25, 25))
+
+# Draw each segment as a black bar
+for x_start, x_end, y in segments:
+    plt.fill_between([x_start, x_end], [y] * 2, [y - bar_height] * 2, color="black")
+
+# Hide the axes for a clean look
+plt.axis('off')
+plt.show()
+     </code></pre>
+
+<p>The x_start code determines the starting point on the x axis for the  bars. Similarly, the y_posotion, is the same as x_start but of course for the y axis. The x_end identifies the end point in which the bar stops, this also determines the length of the bar. bar_height determines the height of the bar with respect to the y-axis. Initially when I looked at the spacing command I thought that this meant that the spacing would be the equivalent to the quantity set. In other words if the spacing=3 then there would be a three unit space (with respect to the y axis) that would be in between each bar segment. I realized that when I changed the spacing to 5 the first set of bars would end at the y value of 5, but thats also where the next set would start. When I changed the value to 6, i noticed that there was a one unit gap between each step. Depth determines how many sets of bars are being created. I then altered the left_segment and right_segment codes to see that it alters the length of each bar in the given depth level. </p>
+</section>
+
+ <figure>
+          <img src="alternating colors.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+
+ <section id="Conclusion">
+        <h2>Conclusion</h2>
+        <p> In this lab we used a plane to display a group of bars of varying lengths and heights. I wanted to create a triangle, whos apex pointed downward as an extension of the code but I was unsuccessful. However, I was able to extend the code to make bars of alternating colors.</p>
+      </section>
+          
