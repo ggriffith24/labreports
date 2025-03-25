@@ -1,7 +1,7 @@
 <html>
 <head> <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="stylesheet" href="https://latex.vercel.app/style.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"/><script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
 
-<title>Fractal Geometry Lab Report</title>
+<title>Fractal Geometry Lab 6 Report</title>
 
 </head>
 <body id="top">
@@ -10,10 +10,10 @@
 
 
   <header>
-    <h1>Fractal Geometry Lab Report</h1>
+    <h1>Fractal Geometry Lab 6 Report</h1>
     <p class="author">
       [Gabrielle Griffith] <br />
-      [January 26, 2025]
+      [March 24, 2025]
     </p>
   </header>
   
@@ -29,28 +29,136 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
         <h2>Introduction</h2>
-        <p></p>
+        <p> In this lab we are given the code for a grid with multiple bullet points. But then we are also introduced to a grid with a more complex arrangement of the bullet points (or dots). The dots are first arranged in the shape of a pointed oval and then similar to a shell. To create these images we use iterations. In this lab, I would like to attempt to create a grid that produces two images with two different iterations, varying in color. </p>
         </section>
 
 
 
       <section id= "Results">
         <h2>Results and Analysis</h2>
-        <p> </p>
+        <p> Before conducting experimentation to produce my desired results I explored the lines of code. I noticed that we can add a title, change the color of the dots, and show the grid. When you look at the x= np. linspace() and y = np. linspace() codes, I discovered that this alters the size of the grid. The size code alters how many dots are created on the grid. The higher the number the more dots are produced. Below I have provided the base code for the standard grid of dots. </p>
 
-
-        <section id="code">
+        
+  <section id="code">
   <pre><code class= "language-python">
-     </code></pre>
- </code></pre>
+    import numpy as np
+import matplotlib.pyplot as plt
 
- <figure>
-          <img src="base tree.png" />
+# Create a simple 2D grid of points using NumPy
+def generate_grid(size):
+    x = np.linspace(-1, 1, size)  # Generate 'size' number of points between -1 and 1
+    y = np.linspace(-1, 1, size)
+    grid = np.meshgrid(x, y)  # Create a 2D grid of points
+    return grid
+
+# Visualize the grid of points
+def plot_grid(grid):
+    x_grid, y_grid = grid
+    plt.figure(figsize=(10, 10))
+    plt.scatter(x_grid, y_grid, s=1, color='blue')  # Plot the grid points
+    plt.title(f'2D Grid of {len(x_grid)}x{len(y_grid)} points')
+    plt.show()
+
+# Set the size of the grid
+size = 50  # You can adjust this to make the grid denser or sparser
+
+# Generate and plot the grid
+grid = generate_grid(size)
+plot_grid(grid)
+     </code></pre>
+<p>The next set of code is for the iterations of the dots on the grid</p>
+       
+
+<section id="code">
+  <pre><code class= "language-python">
+    def iterative_transform(grid, iterations):
+    x_grid, y_grid = grid
+    z = x_grid + 1j * y_grid  # Create a complex plane
+    for i in range(iterations):
+        z = z ** 2 - 0.5  # Iteratively apply the transformation
+    return np.real(z), np.imag(z)
+
+# Set the number of iterations
+iterations = 1
+
+# Apply the iterative transformation
+fractal_grid = iterative_transform(grid, iterations)
+
+# Plot the fractal grid
+plot_grid(fractal_grid)
+
+
+#SECOND SET OF CODE FOR ITERATIONS
+    # Set the number of iterations
+iterations = 2
+
+# Apply the iterative transformation
+fractal_grid = iterative_transform(grid, iterations)
+
+# Plot the fractal grid
+plot_grid(fractal_grid)
+
+#THIRD SET OF CODE FOR ITERATIONS
+    # Set the number of iterations
+iterations = 3
+
+# Apply the iterative transformation
+fractal_grid = iterative_transform(grid, iterations)
+
+# Plot the fractal grid
+plot_grid(fractal_grid)
+     </code></pre>
+          
+<p>Figure 1 represents the base grid with the standard color and rectangular shape (in which the dots are arranged in). Figure 2-4 shows the products of the iterations given to us, with ranging shapes.</p>
+
+<figure>
+          <img src="base 2D Grid.png" />
           <figcaption>
             <strong></strong> 
           </figcaption>
         </figure>
 
+  <figure>
+          <img src="pointed oval iteration.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+
+
+  <figure>
+          <img src="base iteration1.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+
+  <figure>
+          <img src="base iteration2.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+        <section id="code">
+  <pre><code class= "language-python">
+     </code></pre>
+
+<p>The image and code below shows changes to color, quantity of of dots and grid size. More specifically, I changed the grid color to light green and the amount of dots was increased to a 80x80 grid. The range of the x axis is -2 to 2. The y axis starts at -5 and ends at 5.</p>
+ <figure>
+          <img src="green grid.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+<p></p>
+
+           <figure>
+          <img src="base tree.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+          
  <section id="Conclusion">
         <h2>Conclusion</h2>
         <p> </p>
