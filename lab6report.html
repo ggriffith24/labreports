@@ -139,27 +139,192 @@ plot_grid(fractal_grid)
             <strong></strong> 
           </figcaption>
         </figure>
+
+  
         <section id="code">
   <pre><code class= "language-python">
      </code></pre>
 
-<p>The image and code below shows changes to color, quantity of of dots and grid size. More specifically, I changed the grid color to light green and the amount of dots was increased to a 80x80 grid. The range of the x axis is -2 to 2. The y axis starts at -5 and ends at 5.</p>
+          
+<p>The image and code below shows color changes, quantity of dots, and grid size. More specifically, I changed the grid color to light green and increased the number of dots to an 80x80 grid. The range of the x-axis is -2 to 2. The y-axis starts at -5 and ends at 5.</p>
  <figure>
           <img src="green grid.png" />
           <figcaption>
             <strong></strong> 
           </figcaption>
         </figure>
-<p></p>
 
-           <figure>
-          <img src="base tree.png" />
+  <section id="code">
+  <pre><code class= "language-python">
+    import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a simple 2D grid of points using NumPy
+def generate_grid(size):
+    x = np.linspace(-2, 2, size)  # Generate 'size' number of points between -1 and 1
+    y = np.linspace(-5, 5, size)
+    grid = np.meshgrid(x, y)  # Create a 2D grid of points
+    return grid
+
+# Visualize the grid of points
+def plot_grid(grid):
+    x_grid, y_grid = grid
+    plt.figure(figsize=(10, 10))
+    plt.scatter(x_grid, y_grid, s=1, color='lightgreen')  # Plot the grid points
+    plt.title(f'2D Grid of {len(x_grid)}x{len(y_grid)} points')
+    plt.show()
+
+# Set the size of the grid
+size = 80  # You can adjust this to make the grid denser or sparser
+
+# Generate and plot the grid
+grid = generate_grid(size)
+plot_grid(grid)
+     </code></pre>
+          
+<p>Now let us discuss the goal that I would like to achieve with this lab. As a reminder, I wanted to create a grid that included the graphs of two iterations in different colors. I did research and had many trials attempting to complete my goal. For my first attempt I got Figure 6 with its code proceeding it. I believe that this was the closest to what I wanted because you can see the differing colors. But I does not show the iterations as seen in previous images. </p>
+
+<figure>
+          <img src="attempt1.png" />
           <figcaption>
             <strong></strong> 
           </figcaption>
         </figure>
+
+   <section id="code">
+  <pre><code class= "language-python">
+    import numpy as np
+import matplotlib.pyplot as plt
+
+def iterative_transform(grid, iterations):
+    x_grid, y_grid = grid
+    z = x_grid + 1j * y_grid  # Create a complex plane
+    for i in range(iterations):
+        z = z ** 2 - 0.5  # Iteratively apply the transformation
+    return np.real(z), np.imag(z)
+
+def plot_grid(grid1, grid2):
+    x1, y1 = grid1
+    x2, y2 = grid2
+    
+    plt.figure(figsize=(10, 10))
+    plt.scatter(x1, y1, s=1, color='pink', label="Iteration 1", alpha=1)
+    plt.scatter(x2, y2, s=1, color='green', label="Iteration 2", alpha=1)
+    plt.legend()
+    plt.title("Iterations")
+    plt.show()
+
+# Define grid
+x = np.linspace(-2, 2, 400)
+y = np.linspace(-2, 2,400)
+X, Y = np.meshgrid(x, y)
+grid = (X, Y)
+
+# Compute transformations
+iterations_1 = iterative_transform(grid, 5)
+iterations_2 = iterative_transform(grid, 1)
+
+# Plot both iterations on the same plane
+plot_grid(iterations_1, iterations_2)
+     </code></pre>
+
+     
+<p>My other attempt at this is shown in Figure 7 (with its code after aswell). Unfortunately in this attempt you are only able to see one color iteration and I'm not sure why.
+</p>
+
+           <figure>
+          <img src="attempt2.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+
+ <section id="code">
+  <pre><code class= "language-python">
+    import numpy as np
+import matplotlib.pyplot as plt
+
+def iterative_transform(grid, iterations):
+    x_grid, y_grid = grid
+    z = x_grid + 1j * y_grid  # Create a complex plane
+    for i in range(iterations):
+        z = z ** 2 - 1.0  # Iteratively apply the transformation
+    return np.real(z), np.imag(z)
+
+# Define grid
+x = np.linspace(-2, 2, 400)  
+y = np.linspace(-2, 2, 400)
+X, Y = np.meshgrid(x, y)
+grid = (X, Y)
+
+# Apply the iterative transformation for two different iteration counts
+iterations_1 = 2
+iterations_2 = 4 
+fractal_grid_1 = iterative_transform(grid, iterations_1)
+fractal_grid_2 = iterative_transform(grid, iterations_2)
+
+# Plot both iterations on the same graph
+plt.figure(figsize=(10, 10))
+plt.scatter(fractal_grid_1[0], fractal_grid_1[1], s=1, color='pink', label=f"Iteration {iterations_1}", alpha=1) #Plot the first iteration in pink
+plt.scatter(fractal_grid_2[0], fractal_grid_2[1], s=1, color='green', label=f"Iteration {iterations_2}", alpha=1) #Plot the second iteration in green
+plt.legend() #Display the legend
+plt.title("Two Iterations on One Graph")
+plt.show()
+     </code></pre>
+
+   
+<p>In another attempt I was able to create two different grids that displayed two iterations with different colors. This is the only attempt that is near the goal I proposed.</p>
+
+        <figure>
+          <img src="attempt3.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure
+
+     <section id="code">
+  <pre><code class= "language-python">
+    import numpy as np
+import matplotlib.pyplot as plt
+
+def iterative_transform(grid, iterations):
+    x_grid, y_grid = grid
+    z = x_grid + 1j * y_grid  # Create a complex plane
+    results = [z]  # Store intermediate iterations
+    for _ in range(iterations):
+        z = z ** 2 - 0.6  # Iteratively apply the transformation
+        results.append(z)  # Store each iteration
+    return results
+
+def plot_iterations(iterations, ax, title, colormap):
+    colors = colormap(np.linspace(0, 1, len(iterations)))  # Generate colors
+
+    for i, z in enumerate(iterations):
+        x, y = np.real(z), np.imag(z)
+        ax.scatter(x, y, s=0.1, color=colors[i], alpha=0.7)  # Apply different colors
+    ax.set_title(title)
+    ax.axis("equal")
+
+# Define grid
+x = np.linspace(-2, 2, 400)
+y = np.linspace(-2, 2, 400)
+X, Y = np.meshgrid(x, y)
+grid = (X, Y)
+
+# Compute iterations
+iterations_1 = iterative_transform(grid, 5)
+iterations_2 = iterative_transform(grid, 3)
+
+# Plot both iterations with different colors
+fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+plot_iterations(iterations_1, axes[0], "Iteration 1 (Blue)", plt.cm.Reds)   # Red colormap
+plot_iterations(iterations_2, axes[1], "Iteration 2 (Green)", plt.cm.Purples) # Purple colormap
+
+plt.show()
+     </code></pre>
+       
           
  <section id="Conclusion">
         <h2>Conclusion</h2>
-        <p> </p>
+        <p> Throughout this lab we have manipulated the grid to produce a standard display of dots to a more complex arrangement of dots. I changed the quantity of the dots as well as the number of iterations. When changing the calue for z, the sparseness of the dots change. The range of the x- and y-axis can be increased or decreased to your liking. At the beginning of this lab, I sought out to create a graph that displayed different amounts of iterations on one grid, with different colors. Although I was unable to complete the exact goal I set, I was able to come close. I created two grids with two different iterations (one three and the other five), displayed in two different colors.   </p>
       </section>
