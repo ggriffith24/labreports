@@ -15,6 +15,8 @@ Lab 5: https://ggriffith24.github.io/labreports/lab5report.html
 
 Lab 6: https://ggriffith24.github.io/labreports/lab6report.html
 
+Lab 7 & 8: https://ggriffith24.github.io/labreports/lab7&8report.html
+
 # Notes
 
 Hello World
