@@ -65,7 +65,15 @@ plt.show()
       <p>In the code above we notice that there are a few new lines of code that we have not encountered yet. randint is a code that imports the use of random integers in the line of code. The midpoint(P, Q) is defined specifically to find the midpoint between both the x and y coordinates. More specifically 0.5*(P[0] + Q[0]) determine the midpoint of the x coordinates. 0.5*(P[1] + Q[1]) calculated the midpoint of the y-coordinate. The "vertices=" and what follows, explicitly identifies the vertices of the triangles. 
       
       Next in the line of code, we use iteration. First, we define how many times we are iterating, which in 
- this case is 50,0000 times. I noticed that when the number decreases then the figure is less defined. At first, I was a bit confused about what x, y = [0]*iterates, [0]*iterates and x[0], y[0] = random(), random() meant. After a bit of research, I noticed that the first set of code essentially is a placeholder for the amount of </p>
+ this case is 50,0000 times. I noticed that when the number decreases then the figure is less defined. At first, I was a bit confused about what x, y = [0]*iterates, [0]*iterates and x[0], y[0] = random(), random() meant. After a bit of research, I noticed that the first set of code essentially is a placeholder for the number of coordinates based on the number of iterations. The second line of code x[0], y[0] = random(), random(), assigns a random number for the starting x and y value.
+        
+      for i in range(1, iterates):
+    k = randint(0, 2)
+    x[i], y[i] = midpoint(vertices[k], (x[i-1], y[i-1]))
+        
+This code above determines where the next plot of will be depending on the vertices defined above. k is defined by choosing a random vertice as they are specified in previous lines of the code. randin(0,2) chooses a random number ranging from 0 to 2 (which are the number of the vertices we have). We need this line of code to determine where the next point is plotted depending on the vertices location, and the midpoint of an x- y-coordinate (specifically half way to the randomly selected vertex). 
+        The remainder of the code is similar to what we hace previously seen. We can determine the figure size, title and size of the axis. plt.scatter(x,y, color='b',s=0.1) determines the color of the dots in the scatter plot as well as its size.
+       </p>
 
         
  <img src="chaosgametriangle.png" />
@@ -76,7 +84,7 @@ plt.show()
 
  <img src="lessiterationtriangle.png" />
           <figcaption>
-            <strong></strong> 
+            <strong>The following changes have been made to the original code of the Sierpinski Triangle: larger figure size,color changed to green, and larger dot size. Notice that the image is less full due to the iteration value decreasing from 50,000 to 1,000.</strong> 
           </figcaption>
         </figure>
         
