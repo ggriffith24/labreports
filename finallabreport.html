@@ -29,7 +29,7 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
         <h2>Introduction</h2>
-        <p> In this final lab we are presented with three sets of codes, which are as follows: Chaos Game, L-systems, and Hilbert curves. Before I discuss the goals I have for this lab, I would like to define what each of the three terms that were previously listed are. The Chaos Game is a set of code that uses randomness and iterations to produce fractals. In this particular case, the code was used to produce a Sierpenski triangle, which we have done in a previous lab. Aside from this, we can use the Chaos Game to produce: Sierpinski carpets, Dragon curves, hexagon-shaped fractals, or Barnsley ferns. The L-systems, also known as the Lindenmayer systems, are used to create complex shapes and patterns (fractals or plants) using formal grammar. It is often used to make  This "formal grammar" which will be discussed in more depth in other sections of this report. L-systems can be used in video games, to produce plants/trees, cell division, roads, Koch snowflakes, Dragon curves, and Peano curves. A Hilbert curve is a type of L-system, where a pattern is created in the form of a square on a two-dimensional plane. As a result of this lab, I would like to use each of the code types to produce a different variation of the base code as well as use it to present other types of fractals or structures. For example, I will use the Chaos Game to produce an altered version of the Seirpinski triangle but also attempt to create a Dragon Curve (or any other example that I listed). I am not familiar with a Peano so I hope to produce that with the L-system. Lastly, I would like to make a more complex version of the Hilbert curve.</p>
+        <p> In this final lab we are presented with three sets of codes, which are as follows: Chaos Game, L-systems, and Hilbert curves. Before I discuss the goals I have for this lab, I would like to define what each of the three terms that were previously listed are. The Chaos Game is a set of code that uses randomness and iterations to produce fractals. In this case, the code was used to produce a Sierpenski triangle, which we did in a previous lab. Aside from this, we can use the Chaos Game to produce: Sierpinski carpets, Dragon curves, hexagon-shaped fractals, or Barnsley ferns. The L-systems, also known as the Lindenmayer systems, are used to create complex shapes and patterns (fractals or plants) using formal grammar. It is often used to make  This "formal grammar" which will be discussed in more depth in other sections of this report. L-systems can be used in video games, to produce plants/trees, cell division, roads, Koch snowflakes, Dragon curves, and Peano curves. A Hilbert curve is a type of L-system, where a pattern is created in the form of a square on a two-dimensional plane. As a result of this lab, I would like to use each of the code types to produce a different variation of the base code as well as use it to present other types of fractals or structures. For example, I will use the Chaos Game to produce an altered version of the Seirpinski triangle but also attempt to create a Dragon Curve (or any other example that I listed). I am not familiar with a Peano so I hope to produce that with the L-system. Lastly, I would like to make a more complex version of the Hilbert curve.</p>
 
         <p>Below I will present all of the original code of each of the code types that I have discussed above. Along with the code, I'll explain each function of the code and display an image of what is produced as a result of this code. The first set of code presented is the Chaos Game representation of the Sierpinski Triangle.</p>
         
@@ -62,7 +62,11 @@ plt.show()
         </section>
 
         
-      <p></p>
+      <p>In the code above we notice that there are a few new lines of code that we have not encountered yet. randint is a code that imports the use of random integers in the line of code. The midpoint(P, Q) is defined specifically to find the midpoint between both the x and y coordinates. More specifically 0.5*(P[0] + Q[0]) determine the midpoint of the x coordinates. 0.5*(P[1] + Q[1]) calculated the midpoint of the y-coordinate. The "vertices=" and what follows, explicitly identifies the vertices of the triangles. 
+      
+      Next in the line of code, we use iteration. First, we define how many times we are iterating, which in 
+ this case is 50,0000 times. I noticed that when the number decreases then the figure is less defined. At first, I was a bit confused about what x, y = [0]*iterates, [0]*iterates and x[0], y[0] = random(), random() meant. After a bit of research, I noticed that the first set of code essentially is a placeholder for the amount of </p>
+
         
  <img src="chaosgametriangle.png" />
           <figcaption>
@@ -70,7 +74,11 @@ plt.show()
           </figcaption>
         </figure>
 
-
+ <img src="lessiterationtriangle.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
         
   <section id="code">
   <pre><code class= "language-python">
