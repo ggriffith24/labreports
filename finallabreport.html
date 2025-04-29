@@ -84,7 +84,7 @@ This code above determines where the next plot of will be depending on the verti
 
  <img src="lessiterationtriangle.png" />
           <figcaption>
-            <strong>The following changes have been made to the original code of the Sierpinski Triangle: larger figure size,color changed to green, and larger dot size. Notice that the image is less full due to the iteration value decreasing from 50,000 to 1,000.</strong> 
+            <strong>The following changes have been made to the original code of the Sierpinski Triangle: larger figure size, color changed to green, and larger dot size. Notice that the image is less full due to the iteration value decreasing from 50,000 to 1,000.</strong> 
           </figcaption>
         </figure>
         
@@ -152,7 +152,7 @@ plt.show()
 
 
         
- <p> </p>
+ <p>To produce a Barnsley Fern, we are first defining four transformative functions. These functions are defined by the "def f#(x,y):" code where the # is replaced with the number of the function. Probabilities for each of the functions are then defined by: probabilities = [0.01, 0.85, 0.07, 0.07]. Next, based on the probabilities we define when we will use each of the functions. For example, if a random number is generated (by the rand= random.random() code) that is less than 0.85, then the point that is created uses the second function that is presented. As we have seen before we define the number of iterations by placing a value after "iterations=". To ensure that the fern is plotted correctly the code zip(*fern_points) groups the values of x and all the values of y together instead of viewing them as a coordinate together. </p>
 
         
        <img src="Barnsleyfern.png" />
@@ -223,7 +223,7 @@ show()
     </code></pre>
         </section>
 
-<p> </p>
+<p> The first line of code is what we previously have seen, introducing the turtle to the image. All the lines proceeding this sets up and execute the L-system codes. The def apply_rule(char,rules) and return rules.get(char,char) codes applies given rules to certain characters. If there is a particular charater that does not have an rule then the charater is left alone. After we are going to define the actions done by the turle to produce the L-sytem. F means to move forward, + changes the angle by moving to the left, and - changes the angle by moving to the right. The next two lines for me were a bit confusing when I initially read it. Esesentially, for the '[' command we are first determining where the x and y are, then the angle that we are currently at and then saving that position for another time. As for the ']' command is going back to the position that was previously saved and create a new branch from a different point ( a different coordinate).Now we explicitly define the rule for F, and the number of iterations, so that when the command is called it can be done correctly. Then we set up the turtle, as we have done in previous labs, idetifying the stating position angle and pen color. The final set of code for the L-system is determining the length of the branches and the angle. </p>
 
         
        <img src="lsystemleafbase.png" />
@@ -299,7 +299,11 @@ show()
     </code></pre>
         </section>
 
-<p> </p>
+<p> Some of the lines in this code are similar to the ones we previously discussed in the L-system section, because we will be using the L-system to create the Hilbert Curve. The first line of code that we ill discuss is for _ in range(iterations):
+        next_string = ''.join([apply_rules(char, rules) for char in current_string])
+        current_string = next_string
+    return current_string
+Again as before we are applying rules to a a character it has it and on top of that it is creating a list of strings and connects them together into a new string. Next we define the commands, as before and then we define what L and R are. Next we have to create a stinge for the Hilbert Curve and then specify the size of the curve. The remaining lines of code determine the number of iterations, the angle, the turtles starting position, the turtles angle and the color of the pen.</p>
 
         
        <img src="hilbert curve base.png" />
@@ -312,7 +316,7 @@ show()
       
  <section id= "Results">
         <h2>Results and Analysis</h2>
-        <p>  </p>
+        <p> Based on the information given above these are the following goals that I would like to complete by the end of this lab:</p>
 
  <img src=".png" />
           <figcaption>
@@ -327,6 +331,6 @@ show()
 
     <section id= "Conclusion">
      <h2>Conclusion</h2>
-     <p> </p>
+     <p> In this lab we looked at various types of code that are used to produce varying images/fractals. More specifically we looked at the Hilbert Curve (which is a type of L-system), the L-system, the Chaos game and the Barnsley Fern.</p>
    </section>
 
