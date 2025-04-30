@@ -223,7 +223,7 @@ show()
     </code></pre>
         </section>
 
-<p> The first line of code is what we previously have seen, introducing the turtle to the image. All the lines proceeding this sets up and execute the L-system codes. The def apply_rule(char,rules) and return rules.get(char,char) codes applies given rules to certain characters. If there is a particular charater that does not have an rule then the charater is left alone. After we are going to define the actions done by the turle to produce the L-sytem. F means to move forward, + changes the angle by moving to the left, and - changes the angle by moving to the right. The next two lines for me were a bit confusing when I initially read it. Esesentially, for the '[' command we are first determining where the x and y are, then the angle that we are currently at and then saving that position for another time. As for the ']' command is going back to the position that was previously saved and create a new branch from a different point ( a different coordinate).Now we explicitly define the rule for F, and the number of iterations, so that when the command is called it can be done correctly. Then we set up the turtle, as we have done in previous labs, idetifying the stating position angle and pen color. The final set of code for the L-system is determining the length of the branches and the angle. </p>
+<p> The first line of code is what we previously have seen, introducing the turtle to the image. All the lines proceeding this sets up and execute the L-system codes. The def apply_rule(char,rules) and return rules.get(char,char) codes apply given rules to certain characters. If there is a particular character that does not have a rule then the character is left alone. After we are going to define the actions done by the turtle to produce the L-system. F means to move forward, + changes the angle by moving to the left, and - changes the angle by moving to the right. The next two lines for me were a bit confusing when I initially read it. Essentially, for the '[' command we are first determining where the x and y are, then the angle that we are currently at, and then saving that position for another time. As for the ']' command is going back to the position that was previously saved and creates a new branch from a different point ( a different coordinate). Now we explicitly define the rule for F, and the number of iterations, so that when the command is called it can be done correctly. Then we set up the turtle, as we have done in previous labs, identifying the starting position angle and pen color. The final set of codes for the L-system is determining the length of the branches and the angle. </p>
 
         
        <img src="lsystemleafbase.png" />
@@ -303,7 +303,7 @@ show()
         next_string = ''.join([apply_rules(char, rules) for char in current_string])
         current_string = next_string
     return current_string
-Again as before we are applying rules to a character it has it and on top of that it is creating a list of strings and connecting them into a new string. Next, we define the commands, as before, and then we define what L and R are. Then we have to create a stinge for the Hilbert Curve and specify the size of the curve. The remaining lines of code determine the number of iterations, the angle, the turtles' starting position, the turtles' angle, and the color of the pen.</p>
+Again as before we are applying rules to a character it has and on top of that it is creating a list of strings and connecting them into a new string. Next, we define the commands, as before, and then we define what L and R are. Then we have to create a stinge for the Hilbert Curve and specify the size of the curve. The remaining lines of code determine the number of iterations, the angle, the turtles' starting position, the turtles' angle, and the color of the pen.</p>
 
         
        <img src="hilbert curve base.png" />
@@ -318,7 +318,7 @@ Again as before we are applying rules to a character it has it and on top of tha
         <h2>Results and Analysis</h2>
         <p> Based on the information given above these are the following goals that I would like to complete by the end of this lab: produce a Dragon Curve using the Chaos Game, a Peano Curve using the L-system, and an altered version of the Hilbert Curve.</p>
 
-   <p>Unfortunately, I was not able to produce a Dragon Curve from the base code given for the Chaos game. In turn I decided to change the vertices, include multiple colors and different iteration amount. This is shown in the image and line of code below. The colors.apprend() code is what is specifically used to intergrate the different colors into the final product. </p>
+   <p>Unfortunately, I was not able to produce a Dragon Curve from the base code given for the Chaos game. In turn, I decided to change the vertices and include multiple colors and different iteration amounts. This is shown in the image and line of code below. The colors.apprend() code is what is specifically used to integrate the different colors into the final product. </p>
 
     <section id="code">
   <pre><code class= "language-python">
@@ -356,7 +356,7 @@ plt.show()
           </figcaption>
         </figure>
 
-  <p> Next, I attempted to create a Barnsley Fern with an additional branch that pertrudes from about the middle of the main stem. To do this, we would have to create and additional function that would produce the additional branch. After adding the additional branch and changing the formula values I unfortunately did not get this result. Below I do have an example of another structure that was created as  a result of the additional functional and different values of the function. (the code is also shown)</p>
+  <p> Next, I attempted to create a Barnsley Fern with an additional branch that protrudes from about the middle of the main stem. To do this, we would have to create an additional function that would produce the additional branch. Unfortunately, I did not get this result after adding the additional branch (formula) and changing the formula values. Below I have an example of another structure that was created because of the additional functional and different values of the function. (the code is also shown)</p>
 
     <img src="newfern.png" />
           <figcaption>
@@ -432,6 +432,183 @@ plt.title('Barnsley Fern')
 plt.show()
     </code></pre>
         </section>
+
+<p>
+  
+</p>
+
+
+
+
+
+   
+
+<p> The Hilbert Curve is the last image we will discuss. Originally, I aimed to make a more complex version of the original and an animation to go along with it. I have made multiple attempts to create an animation of the altered code but I was only able to get an animation of a vertical line. One of the images that I was able to produce is a Hilbert curve with smaller lines, making it look a bit more complex. Another image that I was able to produce is a Hilbert curve with three alternating colors. I have provided the code as well as two images (to show a closer view of the curve). </p>
+
+     
+   
+   
+    <img src="purplehilbert.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+   
+   <section id="code">
+  <pre><code class= "language-python">
+    # Import necessary modules
+import math
+
+# Initialize the turtle
+initializeTurtle()
+showturtle()
+
+# Function to apply L-system rules
+def apply_rules(char, rules):
+    return rules.get(char, char)
+
+# Function to generate L-system string
+def generate_lsystem(axiom, rules, iterations):
+    current_string = axiom
+    for _ in range(iterations):
+        next_string = ''.join([apply_rules(char, rules) for char in current_string])
+        current_string = next_string
+    return current_string
+
+# Function to draw the L-system with turtle
+def draw_lsystem(turtle_string, length, angle):
+    for command in turtle_string:
+        if command == 'F':
+            forward(length)
+        elif command == '+':
+            left(angle)
+        elif command == '-':
+            right(angle)
+        # 'L' and 'R' are placeholders; we ignore them in drawing
+        else:
+            pass  # Ignore other characters
+
+# Set the parameters for the Hilbert Curve
+axiom = 'L'
+rules = {
+    'L': '-RF+LFL+FR-',
+    'R': '+LF-RFR-FL+'
+}
+iterations = 7  
+angle = 90
+
+# Generate the L-system string for the Hilbert curve
+hilbert_string = generate_lsystem(axiom, rules, iterations)
+
+# Calculate the step size based on desired size and iterations
+size = 720  # Total size of the Hilbert curve (adjust as needed)
+n = 2 ** iterations
+length = size / n - 2
+
+# Move to starting position
+jump(200, 550)  # Adjust the starting position to fit your canvas
+face(0)
+color('purple')
+
+# Draw the Hilbert curve
+draw_lsystem(hilbert_string, length, angle)
+
+# Display the drawing
+show()
+
+    </code></pre>
+        </section>
+   
+   <img src="alternatinghcurve.png" />
+          <figcaption>
+            <strong>Alternating colors of the Hilbert Curve</strong> 
+          </figcaption>
+        </figure>
+
+       <img src="zoomedHcurve.png" />
+          <figcaption>
+            <strong>This is the zoomed-in version of the code illustrated below. To achieve this the size value was changed to 5,000.</strong> 
+          </figcaption>
+        </figure>
+
+   
+<p> In order to implement the alternating colors this code is added:
+  colors = ['skyblue', 'orange', 'red'] #Alternating colors
+  color_index = 0
+The color_index code being set to 0 signifies that it begins at the first color. Next, we need to add: 
+  color(colors[color_index])
+          color_index = (color_index + 1) % len(colors)
+to alternate the color (from my understanding each time we create a new line/move forward). Since we are adding these lines of code we need to remove the color('blue') that was in the original code, since this would contradict each other.</p>
+   
+ <section id="code">
+  <pre><code class= "language-python">
+    # Import necessary modules
+import math
+
+# Initialize the turtle
+initializeTurtle()
+showturtle()
+
+# Function to apply L-system rules
+def apply_rules(char, rules):
+    return rules.get(char, char)
+
+# Function to generate L-system string
+def generate_lsystem(axiom, rules, iterations):
+    current_string = axiom
+    for _ in range(iterations):
+        next_string = ''.join([apply_rules(char, rules) for char in current_string])
+        current_string = next_string
+    return current_string
+
+# Function to draw the L-system with turtle
+def draw_lsystem(turtle_string, length, angle):
+  colors = ['skyblue','orange','red'] #Alternating colors
+  color_index = 0
+
+  for command in turtle_string:
+        if command == 'F':
+          color(colors[color_index])
+          color_index = (color_index + 1) % len(colors) # Change to new pen color
+          forward(length)
+        elif command == '+':
+            left(angle)
+        elif command == '-':
+            right(angle)
+        # 'L' and 'R' are placeholders; we ignore them in drawing
+        else:
+            pass  # Ignore other characters
+
+# Set the parameters for the Hilbert Curve
+axiom = 'L'
+rules = {
+    'L': '-RF+LFL+FR-',
+    'R': '+LF-RFR-FL+'
+}
+iterations = 7
+angle = 90
+
+# Generate the L-system string for the Hilbert curve
+hilbert_string = generate_lsystem(axiom, rules, iterations)
+
+# Calculate the step size based on desired size and iterations
+size = 600  # Total size of the Hilbert curve (adjust as needed)
+n = 2 ** iterations - 1
+length = size / n
+
+# Move to starting position
+jump(400, 500)  # Adjust the starting position to fit your canvas
+face(0)
+
+# Draw the Hilbert curve
+draw_lsystem(hilbert_string, length, angle)
+
+# Display the drawing
+show()
+
+    </code></pre>
+        </section>
+
    
     <section id= "Conclusion">
      <h2>Conclusion</h2>
