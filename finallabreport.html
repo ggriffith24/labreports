@@ -444,7 +444,7 @@ plt.show()
     </code></pre>
         </section>
 
-<p> L-systems are the next type of code that is going to be manipulated. Previously, I stated that I would like to create a Peano Curve. From research, most of the Peano curves I have seen look similar to the Hilbert Curve. Both of the code is restricted to a certain area, in this case a square. Below I have presented a code for the Peano curve. The code will be explained further after the line of code.
+<p> L-systems are the next type of code that is going to be manipulated. Previously, I stated that I would like to create a Peano Curve. From research, most of the Peano curves I have seen look similar to the Hilbert Curve. Both of the code is restricted to a certain area, in this case, a square. Below I have presented a code for the Peano curve. The code will be explained further after the line of code.
   Apart from the Peano Curve, I attempted to make a tree using the leaf that was given as a the base code. Alas, after many trials I was not able to produce a tree that I envisionsed. After the image and code for the Peano curve I have displayed an altered version of the base leaf that was provided. When I changed the rules for F, I was able to produce a branch like stucture.
   
 </p>
@@ -507,7 +507,7 @@ plt.show()
  </code></pre>
         </section>
 
-<p> The similarities that I noticed in this line of code is the use of the rules. The same rules of F,+, and -, still apply and produce the same result. The difference in this line of code is that we use the placeholders of L and R. These do not have a action that they produce but assist with the iteraton to produce each segment of the curve. rad = math.radians(direction) and the few proceeding lines of code is responsible for the angle at which the forward movement is performed. In this case, the angle is calculated using the cosine function.</p>
+<p> The similarity that I noticed in this line of code is the use of the rules. The same rules of F,+, and -, still apply and produce the same result. The difference in this line of code is that we use the placeholders of L and R. These do not have an action that they produce but assist with the iteration to produce each segment of the curve. rad = math.radians(direction) and the few proceeding lines of code are responsible for the angle at which the forward movement is performed. In this case, the angle is calculated using the cosine function.</p>
 
     <img src="branchLsystem.png" />
           <figcaption>
@@ -677,8 +677,13 @@ show()
      </code></pre>
         </section>
 The color_index code being set to 0 signifies that it begins at the first color. Next, we need to add: 
+   <section id="code">
+  <pre><code class= "language-python">
   color(colors[color_index])
           color_index = (color_index + 1) % len(colors)
+     </code></pre>
+        </section>
+   
 to alternate the color (from my understanding each time we create a new line/move forward). Since we are adding these lines of code we need to remove the color('blue') that was in the original code, since this would contradict each other.</p>
    
  <section id="code">
