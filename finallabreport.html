@@ -29,7 +29,7 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
         <h2>Introduction</h2>
-        <p> In this final lab we are presented with three sets of codes, which are as follows: Chaos Game, L-systems, and Hilbert curves. Before I discuss the goals I have for this lab, I would like to define what each of the three terms that were previously listed are. The Chaos Game is a set of code that uses randomness and iterations to produce fractals. In this case, the code was used to produce a Sierpenski triangle, which we did in a previous lab. Aside from this, we can use the Chaos Game to produce: Sierpinski carpets, Dragon curves, hexagon-shaped fractals, or Barnsley ferns. The L-systems, also known as the Lindenmayer systems, are used to create complex shapes and patterns (fractals or plants) using formal grammar. It is often used to make  This "formal grammar" which will be discussed in more depth in other sections of this report. L-systems can be used in video games, to produce plants/trees, cell division, roads, Koch snowflakes, Dragon curves, and Peano curves. A Hilbert curve is a type of L-system, where a pattern is created in the form of a square on a two-dimensional plane. As a result of this lab, I would like to use each of the code types to produce a different variation of the base code as well as use it to present other types of fractals or structures. For example, I will use the Chaos Game to produce an altered version of the Seirpinski triangle but also attempt to create a Dragon Curve (or any other example that I listed). I am not familiar with a Peano so I hope to produce that with the L-system. Lastly, I would like to make a more complex version of the Hilbert curve.</p>
+        <p> In this final lab we are presented with three sets of codes, which are as follows: Chaos Game, L-systems, and Hilbert curves. Before I discuss the goals I have for this lab, I would like to define what each of the three terms that were previously listed are. The Chaos Game is a set of code that uses randomness and iterations to produce fractals. In this case, the code was used to produce a Sierpenski triangle, which we did in a previous lab. Aside from this, we can use the Chaos Game to produce: Sierpinski carpets, Dragon curves, hexagon-shaped fractals, or Barnsley ferns. The L-systems, also known as the Lindenmayer systems, are used to create complex shapes and patterns (fractals or plants) using formal grammar. It is often used to make  This "formal grammar" which will be discussed in more depth in other sections of this report. L-systems can be used in video games, to produce plants/trees, cell division, roads, Koch snowflakes, Dragon curves, and Peano curves. A Hilbert curve is a type of L-system, where a pattern is created in the form of a square on a two-dimensional plane. As a result of this lab, I would like to use each of the code types to produce a different variation of the base code as well as use it to present other types of fractals or structures. For example, I will use the Chaos Game to produce an altered version of the Sierpinski triangle but also attempt to create a Dragon Curve (or any other example that I listed). I am not familiar with a Peano so I hope to produce that with the L-system. Lastly, I would like to make a more complex version of the Hilbert curve.</p>
 
         <p>Below I will present all of the original code of each of the code types that I have discussed above. Along with the code, I'll explain each function of the code and display an image of what is produced as a result of this code. The first set of code presented is the Chaos Game representation of the Sierpinski Triangle.</p>
         
@@ -71,7 +71,7 @@ plt.show()
     k = randint(0, 2)
     x[i], y[i] = midpoint(vertices[k], (x[i-1], y[i-1]))
         
-This code above determines where the next plot of will be depending on the vertices defined above. k is defined by choosing a random vertice as they are specified in previous lines of the code. randin(0,2) chooses a random number ranging from 0 to 2 (which are the number of the vertices we have). We need this line of code to determine where the next point is plotted depending on the vertices location, and the midpoint of an x- y-coordinate (specifically half way to the randomly selected vertex). 
+This code above determines where the next plot will be depending on the vertices defined above. k is defined by choosing a random vertice as they are specified in previous lines of the code. randin(0,2) chooses a random number ranging from 0 to 2 (which is the number of the vertices we have). We need this line of code to determine where the next point is plotted depending on the vertices location, and the midpoint of an x- y-coordinate (specifically halfway to the randomly selected vertex). 
         The remainder of the code is similar to what we hace previously seen. We can determine the figure size, title and size of the axis. plt.scatter(x,y, color='b',s=0.1) determines the color of the dots in the scatter plot as well as its size.
        </p>
 
@@ -313,6 +313,11 @@ Again as before we are applying rules to a character it has and on top of that i
         </figure>
 
            </section>
+
+
+
+
+
       
  <section id= "Results">
         <h2>Results and Analysis</h2>
@@ -356,7 +361,7 @@ plt.show()
           </figcaption>
         </figure>
 
-  <p> Next, I attempted to create a Barnsley Fern with an additional branch that protrudes from about the middle of the main stem. To do this, we would have to create an additional function that would produce the additional branch. Unfortunately, I did not get this result after adding the additional branch (formula) and changing the formula values. Below I have an example of another structure that was created because of the additional functional and different values of the function. (the code is also shown)</p>
+  <p> Next, I attempted to create a Barnsley Fern with an additional branch that protrudes from about the middle of the main stem. To do this, we would have to create an additional function that would produce the additional branch. Unfortunately, I did not get this result after adding the additional branch (formula) and changing the formula values. Below I have an example of another structure that was created because of the additional function and different values of the function. (the code is also shown)</p>
 
     <img src="newfern.png" />
           <figcaption>
@@ -433,12 +438,138 @@ plt.show()
     </code></pre>
         </section>
 
-<p>
+<p> L-systems are the next type of code that is going to be manipulated. Previously I stated that I would like to create a Peano Curve. From research, most of the Peano curves I have seen look similar to the Hilbert Curve. Both of the code is restricted to a certain area, in this case a square. Below I have presented a code for the Peano curve. The code will be explained further after the line of code.
+  Apart from the Peano Curve, I attemped to make a tree using the leaf that was given as a the base code. Alas, after many trials I was not able to produce a tree that I envisionsed. After the image and code for the Peano curve I have displayed an altered version of the base leaf that was provided. When I changed the rules for F, I was able to produce a branch like stucture.
   
 </p>
 
+    <img src="peanocurvewithL.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
+   
+<section id="code">
+  <pre><code class= "language-python">
+import matplotlib.pyplot as plt
+import math
+
+# Define L-system rules for Peano curve
+def generate_lsystem(axiom, rules, iterations):
+    for _ in range(iterations):
+        axiom = ''.join(rules.get(char, char) for char in axiom)
+    return axiom
+
+# Interpret the L-system string into points
+def lsystem_to_path(commands, step=1, angle=90):
+    x, y = 0, 0
+    direction = 0  # angle in degrees, 0 is to the right
+    path = [(x, y)]
+
+    for cmd in commands:
+        if cmd == 'F':
+            rad = math.radians(direction)
+            x += step * math.cos(rad)
+            y += step * math.sin(rad)
+            path.append((x, y))
+        elif cmd == '+':
+            direction += angle
+        elif cmd == '-':
+            direction -= angle
+        # L and R are placeholders
+
+    return zip(*path)  # separate into x and y
+
+# Peano L-system definition
+rules = {
+    "L": "LFRFL-F-RFLFR+F+LFRFL",
+    "R": "RFLFR+F+LFRFL-F-RFLFR"
+}
+axiom = "L"
+iterations = 4  # Increase for more complex curves
+
+# Generate the curve and plot it
+lsys_string = generate_lsystem(axiom, rules, iterations)
+x_vals, y_vals = lsystem_to_path(lsys_string, step=5)
+
+plt.figure(figsize=(8, 8))
+plt.plot(x_vals, y_vals, linewidth=1, color='magenta')
+plt.axis("equal")
+plt.axis("off")
+plt.title(f"Peano Curve (With {iterations} Iterations)")
+plt.show()
+ </code></pre>
+        </section>
+
+<p> The similarities that I noticed in this line of code is the use of the rules. The same rules of F,+, and -, still apply and produce the same result. The difference in this line of code is that we use the placeholders of L and R. These do not have a action that they produce but assist with the iteraton to produce each segment of the curve. rad = math.radians(direction) and the few proceeding lines of code is responsible for the angle at which the forward movement is performed. In this case, the angle is calculated using the cosine function.</p>
+
+    <img src="branchLsystem.png" />
+          <figcaption>
+            <strong></strong> 
+          </figcaption>
+        </figure>
 
 
+      <section id="code">
+  <pre><code class= "language-python">
+    # Initialize the turtle
+initializeTurtle()
+showturtle()
+
+# Function to apply L-system rules
+def apply_rule(char, rules):
+    return rules.get(char, char)
+
+# Function to generate L-system string
+def generate_lsystem(axiom, rules, iterations):
+    current_string = axiom
+    for _ in range(iterations):
+        current_string = ''.join([apply_rule(char, rules) for char in current_string])
+    return current_string
+
+# Function to draw the L-system with turtle
+def draw_lsystem(turtle_string, length, angle):
+    stack = []
+    for command in turtle_string:
+        if command == 'F':
+            forward(length)
+        elif command == '+':
+            left(angle)
+        elif command == '-':
+            right(angle)
+        elif command == '[':
+            position = (getx(), gety())
+            heading_angle = heading()
+            stack.append((position, heading_angle))
+        elif command == ']':
+            position, heading_angle = stack.pop()
+            jump(position[0], position[1])
+            face(heading_angle)
+
+# Define the L-system rules
+rules = {'F': 'F[-F][+F]+FF-[F+FF-F]'}
+
+axiom = 'F'
+iterations = 4
+
+# Generate the L-system string
+turtle_string = generate_lsystem(axiom, rules, iterations)
+
+# Set up the turtle
+jump(400, 590)
+face(0)
+color('BROWN')
+
+# Draw the L-system fractal tree
+length = 11
+angle = -20
+draw_lsystem(turtle_string, length, angle)
+
+# Display the drawing
+show()
+
+    </code></pre>
+        </section>
 
 
    
@@ -612,20 +743,8 @@ show()
    
     <section id= "Conclusion">
      <h2>Conclusion</h2>
-     <p> In this lab we looked at various types of code used to produce varying images/fractals. More specifically we looked at the Hilbert Curve (which is a type of L-system), the L-system, the Chaos game, and the Barnsley Fern. We discussed the role each code line plays in producing the final image. With this knowledge, I then produced fractals with different variations of the original code.</p>
+     <p> In this lab we looked at various types of code used to produce varying images/fractals. More specifically we looked at the Hilbert Curve (which is a type of L-system), the L-system, the Chaos game, and the Barnsley Fern. We discussed the role each code line plays in producing the final image. With this knowledge, I then produced fractals with different variations of the original code. I sought out to create a Dragon Curve using the Chaos system, but I was unsuccessful. it was fascinating to see the development of the images in the Chaos Game. As the iteration was decreased there were less points that were produced. Since this type of code uses randomness the points are sporatic and there may be more areas filled than the other. One of the results that was shown above is a Sierpinsku Triangle with three different colors, depending on the area that the points were placed. Next, I utilized the code provided for the Barnsely Fern to create a slightly altered version of the fern with a wider set of leaves. L-systems was the next set of code that we discussed. Again, with this type of code, my objective was to create a Peano Curve. I successfully was able to produce this code as well as alter the code for the leaf to create a branch. The final set of code that was experimented with was the Hilbert curve. I noticed that this and the Peano Curve were quite similar. Each of these curves used ruled to signify forward movement and the changing of angles. In addition, these curves are confined to a certain area, that being a square. With the Hilbert Curve I was able to increase the number of iteratons that was conducted and create an image with altering colors.  In closing, after much experienmentation and research I was able to create more complex fascinating images of three types of code.</p>
 
-
-       <img src=".png" />
-          <figcaption>
-            <strong></strong> 
-          </figcaption>
-        </figure>
-
-
-       <section id="code">
-  <pre><code class= "language-python">
-    </code></pre>
-        </section>
 
       
    </section>
