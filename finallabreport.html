@@ -72,7 +72,7 @@ plt.show()
     x[i], y[i] = midpoint(vertices[k], (x[i-1], y[i-1]))
         
 This code above determines where the next plot will be depending on the vertices defined above. k is defined by choosing a random vertice as they are specified in previous lines of the code. randin(0,2) chooses a random number ranging from 0 to 2 (which is the number of the vertices we have). We need this line of code to determine where the next point is plotted depending on the vertices location, and the midpoint of an x- y-coordinate (specifically halfway to the randomly selected vertex). 
-        The remainder of the code is similar to what we hace previously seen. We can determine the figure size, title and size of the axis. plt.scatter(x,y, color='b',s=0.1) determines the color of the dots in the scatter plot as well as its size.
+        The remainder of the code is similar to what we have previously seen. We can determine the figure size, title and size of the axis. plt.scatter(x,y, color='b',s=0.1) determines the color of the dots in the scatter plot as well as its size.
        </p>
 
         
@@ -299,11 +299,17 @@ show()
     </code></pre>
         </section>
 
-<p> Some of the lines in this code are similar to the ones we previously discussed in the L-system section because we will be using the L-system to create the Hilbert Curve. The first line of code that we will discuss is for _ in range(iterations):
+<p> Some of the lines in this code are similar to the ones we previously discussed in the L-system section because we will be using the L-system to create the Hilbert Curve. The first line of code that we will discuss is 
+  
+   <section id="code">
+  <pre><code class= "language-python">
+  for _ in range(iterations):
         next_string = ''.join([apply_rules(char, rules) for char in current_string])
         current_string = next_string
     return current_string
-Again as before we are applying rules to a character it has and on top of that it is creating a list of strings and connecting them into a new string. Next, we define the commands, as before, and then we define what L and R are. Then we have to create a stinge for the Hilbert Curve and specify the size of the curve. The remaining lines of code determine the number of iterations, the angle, the turtles' starting position, the turtles' angle, and the color of the pen.</p>
+  </code></pre>
+        </section>
+Again as before we are applying rules to a character it has and on top of that it is creating a list of strings and connecting them into a new string. Next, we define the commands, as before, and then we define what L and R are. Then we have to create a string for the Hilbert Curve and specify the size of the curve. The remaining lines of code determine the number of iterations, the angle, the turtles' starting position, the turtles' angle, and the color of the pen.</p>
 
         
        <img src="hilbert curve base.png" />
@@ -438,8 +444,8 @@ plt.show()
     </code></pre>
         </section>
 
-<p> L-systems are the next type of code that is going to be manipulated. Previously I stated that I would like to create a Peano Curve. From research, most of the Peano curves I have seen look similar to the Hilbert Curve. Both of the code is restricted to a certain area, in this case a square. Below I have presented a code for the Peano curve. The code will be explained further after the line of code.
-  Apart from the Peano Curve, I attemped to make a tree using the leaf that was given as a the base code. Alas, after many trials I was not able to produce a tree that I envisionsed. After the image and code for the Peano curve I have displayed an altered version of the base leaf that was provided. When I changed the rules for F, I was able to produce a branch like stucture.
+<p> L-systems are the next type of code that is going to be manipulated. Previously, I stated that I would like to create a Peano Curve. From research, most of the Peano curves I have seen look similar to the Hilbert Curve. Both of the code is restricted to a certain area, in this case a square. Below I have presented a code for the Peano curve. The code will be explained further after the line of code.
+  Apart from the Peano Curve, I attempted to make a tree using the leaf that was given as a the base code. Alas, after many trials I was not able to produce a tree that I envisionsed. After the image and code for the Peano curve I have displayed an altered version of the base leaf that was provided. When I changed the rules for F, I was able to produce a branch like stucture.
   
 </p>
 
@@ -505,7 +511,7 @@ plt.show()
 
     <img src="branchLsystem.png" />
           <figcaption>
-            <strong></strong> 
+            <strong>The rules for this code was changed to: rules = {'F': 'F[-F][+F]+FF-[F+FF-F]'}.Additionally, the length of the stems was changed from 8 to 11 and the angle was changed to -20. </strong> 
           </figcaption>
         </figure>
 
@@ -664,8 +670,12 @@ show()
 
    
 <p> In order to implement the alternating colors this code is added:
+   <section id="code">
+  <pre><code class= "language-python">
   colors = ['skyblue', 'orange', 'red'] #Alternating colors
   color_index = 0
+     </code></pre>
+        </section>
 The color_index code being set to 0 signifies that it begins at the first color. Next, we need to add: 
   color(colors[color_index])
           color_index = (color_index + 1) % len(colors)
@@ -743,7 +753,7 @@ show()
    
     <section id= "Conclusion">
      <h2>Conclusion</h2>
-     <p> In this lab we looked at various types of code used to produce varying images/fractals. More specifically we looked at the Hilbert Curve (which is a type of L-system), the L-system, the Chaos game, and the Barnsley Fern. We discussed the role each code line plays in producing the final image. With this knowledge, I then produced fractals with different variations of the original code. I sought out to create a Dragon Curve using the Chaos system, but I was unsuccessful. it was fascinating to see the development of the images in the Chaos Game. As the iteration was decreased there were less points that were produced. Since this type of code uses randomness the points are sporatic and there may be more areas filled than the other. One of the results that was shown above is a Sierpinsku Triangle with three different colors, depending on the area that the points were placed. Next, I utilized the code provided for the Barnsely Fern to create a slightly altered version of the fern with a wider set of leaves. L-systems was the next set of code that we discussed. Again, with this type of code, my objective was to create a Peano Curve. I successfully was able to produce this code as well as alter the code for the leaf to create a branch. The final set of code that was experimented with was the Hilbert curve. I noticed that this and the Peano Curve were quite similar. Each of these curves used ruled to signify forward movement and the changing of angles. In addition, these curves are confined to a certain area, that being a square. With the Hilbert Curve I was able to increase the number of iteratons that was conducted and create an image with altering colors.  In closing, after much experienmentation and research I was able to create more complex fascinating images of three types of code.</p>
+     <p> In this lab we looked at various types of code used to produce varying images/fractals. More specifically we looked at the Hilbert Curve (which is a type of L-system), the L-system, the Chaos game, and the Barnsley Fern. We discussed the role each code line plays in producing the final image. With this knowledge, I then produced fractals with different variations of the original code. I sought to create a Dragon Curve using the Chaos system, but I was unsuccessful. It was fascinating to see the development of the images in the Chaos Game. As the iteration was decreased fewer points were produced. Since this type of code uses randomness the points are sporadic and there may be more areas filled than the other. One of the results that was shown above is a Sierpinski Triangle with three different colors, depending on the area where the points were placed. Next, I utilized the code provided for the Barnsely Fern to create a slightly altered version of the fern with a wider set of leaves. L-systems was the next set of code that we discussed. Again, with this type of code, my objective was to create a Peano Curve. I successfully was able to produce this code as well as alter the code for the leaf to create a branch. The final set of code that was experimented with was the Hilbert curve. I noticed that this and the Peano Curve were quite similar. Each of these curves used rules to signify forward movement and the changing of angles. In addition, these curves are confined to a certain area, that being a square. With the Hilbert Curve, I was able to increase the number of iterations that were conducted and create an image with altering colors.  In closing, after much experimentation and research,h I was able to create more complex fascinating images of three types of code.</p>
 
 
       
